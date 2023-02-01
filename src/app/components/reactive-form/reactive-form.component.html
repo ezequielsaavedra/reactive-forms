@@ -1,0 +1,44 @@
+<form [formGroup]="formularioLogin" class="needs-validation" (ngSubmit)="login()">
+    <div class="mb-3">
+        <label for="exampleInputNombre1" class="form-label">Nombre </label>
+        <input formControlName="nombre" type="text" class="form-control" id="exampleInputNombre1">
+        <div class="valid" *ngIf="formularioLogin.controls['nombre'].dirty && formularioLogin.controls['nombre'].valid">
+            Campo correcto
+        </div>
+        <div class="invalid" *ngIf="formularioLogin.controls['nombre'].dirty && formularioLogin.controls['nombre'].errors?.['required']">
+            Por favor, introduce tu nombre.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp">
+        <div class="valid" *ngIf="formularioLogin.controls['email'].dirty && formularioLogin.controls['email'].valid">
+            Campo correcto
+        </div>
+        <div class="invalid" *ngIf="formularioLogin.controls['email'].dirty && formularioLogin.controls['email'].errors?.['required']">
+            Por favor, introduce tu email.
+        </div>
+        <div class="invalid" *ngIf="formularioLogin.controls['email'].dirty && formularioLogin.controls['email'].errors?.['pattern']">
+            Por favor, introduce un formato correcto.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+        <div class="valid" *ngIf="formularioLogin.controls['password'].dirty && formularioLogin.controls['password'].valid">
+            Campo correcto
+        </div>
+        <div class="invalid" *ngIf="formularioLogin.controls['password'].dirty && formularioLogin.controls['password'].errors?.['required']">
+            Por favor, introduce tu password.
+        </div>
+        <div class="invalid" *ngIf="formularioLogin.controls['password'].dirty && formularioLogin.controls['password'].errors?.['minlength']">
+            Tu password no puede tener menos de 8 caracteres.
+        </div>
+    </div>
+    <div class="mb-3 form-check">
+        <input formControlName="recordar" type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Recordar Usuario</label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="formularioLogin.invalid">Submit</button>
+</form>
